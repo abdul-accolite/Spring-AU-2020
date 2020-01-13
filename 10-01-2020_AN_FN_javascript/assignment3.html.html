@@ -1,0 +1,59 @@
+<html>
+<head>
+<script>
+var value=0;
+	function validate_func()
+	{
+		
+		var res; 
+            var str =  document.getElementById("password").value; 
+            if (str.match(/[a-z]/) && str.match( 
+                    /[A-Z]/) && str.length >= 8 && str.match(/[@\*\$]/)&&str.match(/abc/)) 
+                {res = "TRUE"; console.log("password goes with the norms");value=1;}
+            else 
+                {res = "FALSE"; console.log("password doesn't go with the norms");}
+            document.getElementById("t2").innerHTML  += res; 
+			
+	}
+	function sub()
+	{
+		var name=document.getElementById("name").value;
+		var passw=document.getElementById("password").value;
+		var pass = document.getElementById("con-password").value;
+		var n = pass.localeCompare(passw);
+		if(n==0 && value==1){
+		console.log("both passwords are same!");
+		console.log("name is :	"+name);
+		console.log("password is:	"+passw);
+		document.getElementById("submit").style.display="block";
+		}
+		else if(n==0){
+			console.log("passwords match but doesn't go with norms.");
+		}
+		else{
+			console.log("both the passwords aren't same, try changing the password and check again. thank you.");
+		}
+		
+	}
+</script>
+</head>
+<body>
+<p> a password should have atleast one small letter, a capital letter and atleast a special character(*,$,@),length>=8, and should contain "abc"</p>
+<p id="t2">password goes with the norms:</p>
+	<form id="formm">
+  Name:<br>
+  <input type="text" id="name" name="firstname" required>
+  <br>
+  password:<br>
+  <input type="password" id="password" name="password" onblur="validate_func()"  required>
+  <br>
+  confirm-password:<br>
+  <input type="password" id="con-password" name="confirm-password"  required>
+  <br>
+  <br> 
+  <input type="button" value="validate-password" onclick="sub()">
+  if both the passwords are same and follow norms then a submit button will appear.	
+  <input type="submit" id = "submit" value ="submit" style="display:none">
+</form> 
+</body>
+</html>

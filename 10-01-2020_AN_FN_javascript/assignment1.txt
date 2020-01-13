@@ -1,0 +1,127 @@
+a=[1,2,3,4,5,6,7,8,9,10];
+(10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+b=[1,2,3];
+(3) [1, 2, 3]
+a.concat(b);
+(13) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3]
+c=a.slice(1,3);
+(2) [2, 3]
+
+function doIt(age)
+{if(age>1)return true;}
+undefined
+a.every(doIt);
+false
+a.some(doIt);
+true
+
+function doThis(age)
+{console.log("hi ");}
+undefined
+a.forEach(doThis);
+VM1137:2 hi 
+VM1137:2 hi 
+VM1137:2 hi 
+VM1137:2 hi 
+VM1137:2 hi 
+VM1137:2 hi 
+VM1137:2 hi 
+VM1137:2 hi 
+VM1137:2 hi 
+VM1137:2 hi 
+
+a.lastIndexOf(1);
+0
+a.indexOf(1);
+0
+a.pop();
+10
+console.log(a);
+VM1320:1 (9) [1, 2, 3, 4, 5, 6, 7, 8, 9]
+undefined
+a.push(10);
+10
+console.log(a);
+VM1396:1 (10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+undefined
+a.reverse();
+(10) [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+console.log(a);
+VM1488:1 (10) [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+undefined
+a.shift();
+10
+console.log(a);
+VM1559:1 (9) [9, 8, 7, 6, 5, 4, 3, 2, 1]
+undefined
+a.unshift(10);
+10
+console.log(a);
+VM1704:1 (10) [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+a.slice(0,10);
+(10) [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+console.log(a);
+VM1792:1 (10) [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+a.splice(2,2,7,8);
+(2) [8, 7]
+console.log(a);
+VM1885:1 (10) [10, 9, 7, 8, 6, 5, 4, 3, 2, 1]
+
+a.sort();// works with strings, when applied on numbers gives improper results.
+(10) [1, 10, 2, 3, 4, 5, 6, 7, 8, 9]
+a.forEach(item=>item+=2);
+
+console.log(a);
+VM2017:1 (10) [1, 10, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+a.forEach(item=>{item+=2;console.log(item);});
+VM2070:1 3
+VM2070:1 12
+VM2070:1 4
+VM2070:1 5
+VM2070:1 6
+VM2070:1 7
+VM2070:1 8
+VM2070:1 9
+VM2070:1 10
+VM2070:1 11
+
+console.log(a);
+VM2106:1 (10) [1, 10, 2, 3, 4, 5, 6, 7, 8, 9]
+
+fruits=["banana","apple","mango"];
+(3) ["banana", "apple", "mango"]
+fruits.sort();
+(3) ["apple", "banana", "mango"]
+console.log(fruits);
+VM2271:1 (3) ["apple", "banana", "mango"]
+undefined
+fruits.toString();
+"apple,banana,mango"
+console.log(fruits);
+VM2533:1 (3) ["apple", "banana", "mango"]
+
+fruits.join("*");
+"apple*banana*mango"
+a.filter(item=>item%2);
+(5) [1, 3, 5, 7, 9]
+console.log(a);
+VM2748:1 (10) [1, 10, 2, 3, 4, 5, 6, 7, 8, 9]
+
+function doWhy(total, count)
+{
+    return total-count;}
+undefined
+var array=[175,50,25];
+undefined
+array.reduce(doWhy);
+100
+array.reduceRight(doWhy);
+-200
+var array1=[4,9,16,25];
+undefined
+array1.map(Math.sqrt);
+(4) [2, 3, 4, 5]

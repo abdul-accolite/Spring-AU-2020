@@ -1,0 +1,4 @@
+\n is the newline character, while \r is the carriage return. They differ in what uses them. Windows uses \r\n to signify the enter key was pressed, 
+while Linux and Unix use \n to signify that the enter key was pressed.
+ In a standard ANSI keyboard, there's only Enter key, which is mapped to a carriage return charactor (13) in ASCII. 
+ in Unix-like system, any carriage return is translated to a line feed charator (10 in ASCII) before handing to the program that receives the input. 

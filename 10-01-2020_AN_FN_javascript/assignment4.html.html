@@ -1,0 +1,57 @@
+<!Doctype html>
+<html>
+<head>
+	<title>
+	</title>
+	<script>
+		var arr=["abdul.qadir7","rahul.pareek7","jaspreet.singh7","abdus.subhan.7","yash.anand.5"];
+		var arr2=[];
+		function myfunc()
+		{
+			arr.sort();
+		document.getElementById("t2").innerHTML+="\n\n"+arr.join("\n\n");
+		}
+		function func()
+		{
+			var username=document.getElementById("newtext").value;
+			//console.log(username);
+			//arr.filter(item=>r1.test());
+			arr.forEach(item=>{if(item.includes(username)){arr2.push(item);}});
+			arr2.sort();
+			document.getElementById("t2").innerHTML=arr2.join("\n\n");
+			arr2=[];
+		}
+		function fun()
+		{
+			var username=document.getElementById("newtext").value;
+			var i=0;
+			arr.forEach(item=>{if(item.localeCompare(username)==0 && i==0){i=1;}});
+			if(i==0)arr.push(username);
+			arr.sort();
+			document.getElementById("t3").innerHTML="The updated list of usernames is:\n\n"+arr.join("\n\n");
+		}
+	</script>
+</head>
+<body onload="myfunc()">
+<pre>
+<p id="t2">the list of usernames is:</p></pre>
+	<form>
+		
+		
+
+ 		name :   <input type="text" name="name"><br>
+           Country
+                <select class='vi'>
+                    <option value="usa">usa</option>
+                    <option value="India">india</option>
+                    <option value="UK">UK</option>
+                    <option value="AUS">AUS</option>
+                  </select>                  
+                    <br>
+
+        Usernames:  <input type="text" id= "newtext" onkeyup="func()"  ><br>
+		 <input type="button" onclick="fun()" value="update">
+		 </form>
+		 <pre><p id="t3"></p></pre>
+</body>
+</html>
