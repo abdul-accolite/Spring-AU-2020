@@ -1,0 +1,196 @@
+
+
+instead of triggers aren't supported in mysql.
+But in search of instead of triggers we learnt beforetriggers(which triggers before insert or update or delete operations.)
+thank you.
+
+create database company;
+
+use company;
+
+
+
+create table employee(
+
+	emp_id int primary key,
+
+    emp_name varchar(20),
+
+    job_name varchar(20),
+
+    salary int
+
+);
+
+
+
+
+
+
+
+insert into employee values(1,"aryan","Web Developer",40000);
+
+insert into employee values(2,"Ash","Accountant",30000);
+
+insert into employee values(3,"Rahul","Accountant",30000);
+
+insert into employee values(4,"Pragya","Web Developer",40000);
+
+insert into employee values(5,"Abhigyan","Web Developer",40000);
+
+insert into employee values(6,"Mona","Testor",20000);
+
+insert into employee values(7,"Lola","Web Developer",40000);
+
+insert into employee values(8,"Vivan","Testor",20000);
+
+insert into employee values(9,"Ajay","Web Developer",40000);
+
+insert into employee values(10,"Budo","Testor",20000);
+
+insert into employee values(11,"Sajal","Accountant",20000);
+
+insert into employee values(13,"SOM",NULL,30000);
+insert into employee values(14,"Yash","Web Developer",40000);
+
+insert into employee values(15,"Ash","Accountant",30000);
+
+insert into employee values(16,"Rahul","Accountant",30000);
+
+insert into employee values(17,"Pragya","Web Developer",40000);
+
+insert into employee values(18,"Abhigyan","Web Developer",40000);
+
+insert into employee values(19,"Mona","Testor",20000);
+
+insert into employee values(20,"Lola","Web Developer",40000);
+
+insert into employee values(21,"Vivan","Testor",20000);
+
+insert into employee values(22,"Ajay","Web Developer",40000);
+
+insert into employee values(28,"judo","restler",20000);
+
+insert into employee values(24,"Sajal","Accountant",20000);
+
+insert into employee values(25,"SOM",NULL,30000);
+
+
+create table audit(
+
+	employee_id int,
+
+    deleted_by varchar(40)
+
+);
+
+create table update_log(
+
+	employee_id int,
+
+    updated_by varchar(40)
+
+);
+
+DELIMITER $$
+
+CREATE TRIGGER insertTrigger BEFORE INSERT ON employee
+
+FOR EACH ROW BEGIN
+
+   IF (NEW.job_name IS NULL) THEN
+
+        SET NEW.job_name="architect";
+
+   END IF;
+
+END$$
+
+
+
+DELIMITER ;
+
+
+
+ 
+
+insert into employee values(136,"aradhana",NULL,20000);
+
+
+DELIMITER $$
+CREATE TRIGGER deleteTrigger BEFORE DELETE ON employee
+
+FOR EACH ROW BEGIN
+
+	DECLARE memb varchar(40);
+
+    SELECT USER() INTO memb;
+
+    INSERT INTO audit
+
+   ( employee_id,
+
+     deleted_by)
+
+   VALUES
+
+   ( OLD.emp_id,
+
+     memb );
+
+
+
+END$$
+
+
+
+DELIMITER ;
+
+
+
+delete from employee where emp_id=2;
+
+
+
+
+
+DELIMITER $$
+
+
+
+CREATE TRIGGER updateTrigger BEFORE UPDATE ON employee
+
+FOR EACH ROW BEGIN
+
+	DECLARE memb varchar(30);
+
+    SELECT User() INTO memb;
+
+    INSERT INTO update_log
+
+    (employee_id,
+
+    updated_by)
+
+    VALUES
+
+    (OLD.emp_id,
+
+    memb);
+
+
+
+END$$
+
+
+
+DELIMITER ;    
+
+
+
+update employee set emp_name="amarnath" where emp_id=13;
+
+select * from update_log;
+select * from audit;
+select * from employee;
+
